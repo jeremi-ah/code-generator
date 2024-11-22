@@ -13,19 +13,19 @@ public class AccountController {
     private AccountService service;
 
     @GetMapping
-    public List<AccountDto> findAll(@RequestParam Map<String, Object> filters) {
+    public List<AccountDto> findAll(@RequestParam("id") Map<String, Object> filters) {
         return service.findAll(filters);
     }
 
     @GetMapping("/page")
-    public List<AccountDto> findByPage(@RequestParam Map<String, Object> filters,
-                                  @RequestParam int page,
-                                  @RequestParam int size) {
+    public List<AccountDto> findByPage(@RequestParam("id") Map<String, Object> filters,
+                                  @RequestParam("page") int page,
+                                  @RequestParam("size") int size) {
         return service.findByPage(filters, page, size);
     }
 
     @GetMapping("/{id}")
-    public AccountDto findById(@PathVariable Long id) {
+    public AccountDto findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
@@ -35,12 +35,12 @@ public class AccountController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable Long id, @RequestBody AccountDto dto) {
+    public void update(@PathVariable("id") Long id, @RequestBody AccountDto dto) {
         service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
 }

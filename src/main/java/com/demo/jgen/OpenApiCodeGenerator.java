@@ -45,6 +45,7 @@ public class OpenApiCodeGenerator {
             BaseCodeGenerator controllerGenerator = new ControllerCodeGenerator();
             BaseCodeGenerator controllerTestGenerator = new ControllerTestCodeGenerator();
             BaseCodeGenerator serviceTestGenerator = new ServiceTestCodeGenerator();
+            BaseCodeGenerator jmeterTestPlanGenerator = new JMeterTestPlanCodeGenerator();
 
             dtoGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             mapperGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
@@ -53,6 +54,7 @@ public class OpenApiCodeGenerator {
             controllerGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             controllerTestGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             serviceTestGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
+            jmeterTestPlanGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
         }
     }
 

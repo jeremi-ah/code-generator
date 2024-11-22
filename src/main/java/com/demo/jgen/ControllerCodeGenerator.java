@@ -23,19 +23,19 @@ public class ControllerCodeGenerator implements BaseCodeGenerator {
                     private %sService service;
 
                     @GetMapping
-                    public List<%sDto> findAll(@RequestParam Map<String, Object> filters) {
+                    public List<%sDto> findAll(@RequestParam("id") Map<String, Object> filters) {
                         return service.findAll(filters);
                     }
 
                     @GetMapping("/page")
-                    public List<%sDto> findByPage(@RequestParam Map<String, Object> filters,
-                                                  @RequestParam int page,
-                                                  @RequestParam int size) {
+                    public List<%sDto> findByPage(@RequestParam("id") Map<String, Object> filters,
+                                                  @RequestParam("page") int page,
+                                                  @RequestParam("size") int size) {
                         return service.findByPage(filters, page, size);
                     }
 
                     @GetMapping("/{id}")
-                    public %sDto findById(@PathVariable Long id) {
+                    public %sDto findById(@PathVariable("id") Long id) {
                         return service.findById(id);
                     }
 
@@ -45,12 +45,12 @@ public class ControllerCodeGenerator implements BaseCodeGenerator {
                     }
 
                     @PutMapping("/{id}")
-                    public void update(@PathVariable Long id, @RequestBody %sDto dto) {
+                    public void update(@PathVariable("id") Long id, @RequestBody %sDto dto) {
                         service.update(id, dto);
                     }
 
                     @DeleteMapping("/{id}")
-                    public void delete(@PathVariable Long id) {
+                    public void delete(@PathVariable("id") Long id) {
                         service.delete(id);
                     }
                 }
