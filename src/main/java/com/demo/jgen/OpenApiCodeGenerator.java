@@ -13,7 +13,7 @@ public class OpenApiCodeGenerator {
     public static void main(String[] args) {
         try {
             String yamlFilePath = System.getProperty("yamlFilePath", "./src/main/resources/banking-api.yml");
-            String outputDir = System.getProperty("outputDir", "./generated/");
+            String outputDir = System.getProperty("outputDir", "./Customer/");
             
             File targetDir = new File(outputDir);
             System.out.println("Generating code to " + targetDir.getAbsolutePath());
@@ -46,6 +46,7 @@ public class OpenApiCodeGenerator {
             BaseCodeGenerator controllerTestGenerator = new ControllerTestCodeGenerator();
             BaseCodeGenerator serviceTestGenerator = new ServiceTestCodeGenerator();
             BaseCodeGenerator jmeterTestPlanGenerator = new JMeterTestPlanCodeGenerator();
+            BaseCodeGenerator asciiDocGenerator = new AsciiDocCodeGenerator();
 
             dtoGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             mapperGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
@@ -55,6 +56,10 @@ public class OpenApiCodeGenerator {
             controllerTestGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             serviceTestGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
             jmeterTestPlanGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
+            asciiDocGenerator.generateCode(packageName, resourceName, packageDir, schemas.get(schemaName));
+            
+//            AsciiDocCodeGenerator asciiDocGenerator = new AsciiDocCodeGenerator();
+//            asciiDocGenerator.generateAsciiDoc(packageDir);  // Generate AsciiDoc in the resource-specific directory
         }
     }
 
